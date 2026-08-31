@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nobody Waits — Social Security Claiming, Gender, and Wealth</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,900&family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-light: #fdf4ec;
+            --bg-card: #fffaf5;
+            --color-red: #c02a2a;
+            --color-dark-red: #7a1520;
+            --color-orange: #e2582f;
+            --color-yellow: #eda32c;
+            --text-main: #241c1a;
+        }
+
+        * { 
+            box-sizing: border-box; 
+        }
+
+        ::selection {
+            background: var(--color-yellow);
+            color: var(--color-dark-red);
+        }
+
+        /* Custom Scrollbar for Chrome, Edge, and Safari */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-light);
+            border-left: 2px solid var(--color-dark-red);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--color-red);
+            border: 2px solid var(--color-dark-red);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--color-orange);
+        }
+
+        /* Standardized link styling */
+        a {
+            color: var(--color-red);
+            text-decoration: underline;
+            text-decoration-color: var(--color-yellow);
+            text-decoration-thickness: 3px;
+            text-underline-offset: 2px;
+            transition: all 0.2s ease-in-out;
+        }
+
+        a:hover {
+            background-color: var(--color-yellow);
+            color: var(--text-main);
+        }
+
+        figure {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        figure:hover {
+            transform: translateY(-3px);
+            box-shadow: 10px 10px 0 var(--color-red);
+        }
+
+        body {
+            margin: 0;
+            padding: 28px 16px 0;
+            background-color: var(--bg-light);
+            background-image: radial-gradient(var(--color-yellow) 1px, transparent 1px);
+            background-size: 22px 22px;
+            font-family: 'Space Grotesk', system-ui, sans-serif;
+            color: var(--text-main);
+            font-size: 17px;
+            line-height: 1.65;
+        }
+
+        .wrap {
+            max-width: 880px;
+            margin: 0 auto 40px;
+            background: var(--bg-card);
+            border: 3px solid var(--color-dark-red);
+            box-shadow: 10px 10px 0 var(--color-orange);
+            padding: 0 0 10px;
+        }
+
+        /* ---------- header ---------- */
+        header {
+            background: var(--color-dark-red);
+            color: var(--bg-light);
+            padding: 34px 34px 26px;
+            position: relative;
+        }
+
+        h1 {
+            font-family: 'Fraunces', Georgia, serif;
+            font-weight: 900;
+            font-size: 3.5rem;
+            line-height: 1.02;
+            margin: 0 0 10px;
+            color: var(--bg-light);
+        }
+
+        h1 em {
+            font-style: normal;
+            color: var(--color-yellow);
+        }
+
+        .deck {
+            font-size: 18px;
+            max-width: 46ch;
+            margin: 0;
+            color: #f3d9c8;
+        }
+
+        .byline {
+            font-family: 'Space Mono', monospace;
+            font-size: 12px;
+            letter-spacing: 1.4px;
+            text-transform: uppercase;
+            margin-top: 18px;
+            color: var(--color-yellow);
+        }
+
+        .stamp {
+            position: absolute;
+            top: 26px; 
+            right: 26px;
+            transform: rotate(6deg);
+            border: 2px solid var(--color-yellow);
+            color: var(--color-yellow);
+            font-family: 'Space Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 1px;
+            padding: 6px 10px;
+            line-height: 1.3;
+            text-align: center;
+        }
+
+        /* ---------- banner (formerly ticker) ---------- */
+        .banner {
+            background: var(--color-orange);
+            color: #fff;
+            border-top: 3px solid var(--color-dark-red);
+            border-bottom: 3px solid var(--color-dark-red);
+            font-family: 'Space Mono', monospace;
+            font-size: 13px;
+            letter-spacing: 1px;
+            padding: 12px 16px;
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        /* ---------- nav ---------- */
+        nav {
+            padding: 16px 34px;
+            border-bottom: 2px dashed #e3bfa6;
+        }
+
+        nav a {
+            font-family: 'Space Mono', monospace;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+            color: var(--color-dark-red);
+            border: 2px solid var(--color-dark-red);
+            padding: 5px 10px;
+            display: inline-block;
+            margin: 4px 6px 4px 0;
+        }
+
+        nav a:hover { 
+            background: var(--color-red); 
+            color: #fff; 
+        }
+
+        /* ---------- body ---------- */
+        main { 
+            padding: 10px 34px 20px; 
+        }
+
+        h2 {
+            font-family: 'Fraunces', Georgia, serif;
+            font-weight: 900;
+            font-size: 28px;
+            color: var(--color-red);
+            margin: 44px 0 4px;
+            line-height: 1.1;
+        }
+
+        h2 .num {
+            font-family: 'Space Mono', monospace;
+            font-size: 13px;
+            background: var(--color-red);
+            color: #fff;
+            padding: 3px 8px;
+            margin-right: 10px;
+            vertical-align: 6px;
+        }
+
+        .rule { 
+            border-top: 3px solid var(--color-yellow); 
+            margin: 8px 0 18px; 
+        }
+
+        p { 
+            margin: 15px 0; 
+        }
+
+        .lede { 
+            font-size: 19px; 
+        }
+
+        mark {
+            background: linear-gradient(transparent 58%, var(--color-yellow) 58%);
+            padding: 0 2px;
+        }
+
+        .short {
+            background: #fff1de;
+            border: 2px solid var(--color-yellow);
+            border-left: 10px solid var(--color-red);
+            padding: 18px 22px;
+            margin: 26px 0 6px;
+        }
+
+        .short h3 {
+            font-family: 'Space Mono', monospace;
+            font-size: 12px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--color-dark-red);
+            margin: 0 0 8px;
+        }
+
+        .short ol { 
+            margin: 0; 
+            padding-left: 20px; 
+        }
+
+        .short li { 
+            margin: 7px 0; 
+        }
+
+        figure {
+            margin: 30px 0;
+            background: #fff;
+            border: 3px solid var(--color-dark-red);
+            box-shadow: 7px 7px 0 var(--color-yellow);
+            padding: 14px 14px 0;
+        }
+
+        figure img { 
+            width: 100%; 
+            display: block; 
+        }
+
+        figcaption {
+            background: var(--color-dark-red);
+            color: var(--bg-light);
+            font-family: 'Space Mono', monospace;
+            font-size: 12px;
+            letter-spacing: 0.6px;
+            padding: 9px 12px;
+            margin: 14px -14px 0;
+        }
+
+        .pull {
+            font-family: 'Fraunces', Georgia, serif;
+            font-weight: 700;
+            font-size: 25px;
+            line-height: 1.28;
+            color: var(--color-dark-red);
+            border-left: 8px solid var(--color-orange);
+            padding: 4px 0 4px 20px;
+            margin: 32px 0;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 26px 0;
+        }
+
+        .card {
+            border: 2px solid var(--color-dark-red);
+            padding: 14px 16px;
+            background: #fff;
+            font-size: 15.5px;
+        }
+
+        .card h4 {
+            font-family: 'Space Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 1.4px;
+            text-transform: uppercase;
+            color: var(--color-red);
+            margin: 0 0 6px;
+        }
+
+        code {
+            font-family: 'Space Mono', monospace;
+            font-size: 14px;
+            background: #f6e3d3;
+            padding: 1px 5px;
+        }
+
+        footer {
+            background: var(--color-dark-red);
+            color: #f3d9c8;
+            padding: 22px 34px;
+            font-size: 14px;
+            margin-top: 30px;
+            border-top: 3px dashed var(--color-yellow);
+        }
+
+        footer a { 
+            color: var(--color-yellow); 
+            background-image: none; 
+        }
+
+        /* Media Queries */
+        @media (max-width: 640px) { 
+            .grid { 
+                grid-template-columns: 1fr; 
+            }
+            h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<div class="wrap">
+
+    <header>
+        <div class="stamp">QSS 20<br>FINAL<br>PROJECT</div>
+        <h1>Nobody<br>Waits.</h1>
+        <p class="deck">Social Security pays you more if you delay. Almost nobody delays. I went looking for who does, who doesn't, and what actually separates them.</p>
+        <div class="byline">Ellenia Paty &nbsp;·&nbsp; Dartmouth College</div>
+    </header>
+
+    <div class="banner">
+        62 IS THE MOST POPULAR CLAIMING AGE IN AMERICA &nbsp;★&nbsp; WAITING PAYS MORE &nbsp;★&nbsp; WOMEN CLAIM EARLIER THAN MEN &nbsp;★&nbsp; THE BOTTOM WEALTH QUARTILE CLAIMS AT 62 THE MOST
+    </div>
+
+    <nav>
+        <a href="#question">01 Question</a>
+        <a href="#data">02 Data</a>
+        <a href="#method">03 Method</a>
+        <a href="#findings">04 Results</a>
+        <a href="#sowhat">05 Takeaways</a>
+    </nav>
+
+    <main>
+
+        <div class="short">
+            <h3>The short version</h3>
+            <ol>
+                <li>Every year you hold off claiming past 62 until 70, your monthly benefit will increase, permanently. Waiting is usually the better deal, if you live to see 70 years old and beyond.</li>
+                <li>Women in the sample claim earlier than men do.</li>
+                <li>The claimants at exactly 62 have the least household wealth, which points at a cash-flow problem, not a knowledge problem.</li>
+            </ol>
+        </div>
+
+        <h2 id="question"><span class="num">01</span>The question</h2>
+        <div class="rule"></div>
+        <p class="lede">You can start collecting Social Security at 62. You can also wait, and if you wait until your official retirement age, or even longer to 70 years old, the checks get bigger for the rest of your life. Run the numbers for a typical worker and delaying usually wins.</p>
+        <p>Then you look at what people actually do, and 62 is the single most common age anyone claims. That is the whole puzzle. Either a very large number of Americans are leaving money on the table, or the standard math is missing something about their lives.</p>
+        <p>So the question I set out to answer: is claiming at 62 a habit that cuts across everybody, or is it concentrated among the people who can't afford to wait? And does it look different for women than for men?</p>
+
+        <h2 id="data"><span class="num">02</span>The data</h2>
+        <div class="rule"></div>
+        <p>I used the <strong>RAND Health and Retirement Study Longitudinal File</strong>, a public dataset built by RAND and the University of Michigan. It follows the same group of older Americans across 16 survey waves going back to 1992, and it records work status, self-rated health, education, and household wealth every single wave. That repeated structure is what makes it useful here. I can watch the same person approach 62 rather than guess from a snapshot.</p>
+        <p>RAND does not give you a claiming age. There's no column for the year this person filed. So I built a proxy. For each respondent I found the first wave where they report not working and are between 62 and 70, and I treated that age as the claiming age.</p>
+        <p>That is not the same thing. People retire without filing. People file and keep working part time.</p>
+
+        <h2 id="method"><span class="num">03</span>What I did</h2>
+        <div class="rule"></div>
+        <p>Wealth first. I averaged total household wealth across every wave a person appears in, then sorted households into quartiles, Q1 being the poorest and Q4 the richest. Averaging across waves smooths out one bad year, though it also means a household that crashed right before 62 gets credit for its better decades. Something to revisit.</p>
+        <p>Then two models, because the question has two shapes to it:</p>
+        
+        <div class="grid">
+            <div class="card">
+                <h4>Linear model</h4>
+                Predicts the claiming age itself from gender and wealth. Answers: on average, does more money move the age later, and by how much?
+            </div>
+            <div class="card">
+                <h4>Logistic model</h4>
+                Predicts the odds of claiming at exactly 62. Answers: who is bunching at the earliest possible date, specifically?
+            </div>
+        </div>
+        
+        <p>Everything runs in three numbered notebooks that go in order: <code>00_pull</code> grabs the columns out of the raw Stata file, <code>01_merge</code> builds the variables, <code>02_analyze</code> makes the figures and fits the models.</p>
+
+        <h2 id="findings"><span class="num">04</span>What I found</h2>
+        <div class="rule"></div>
+
+        <figure>
+            <img src="https://github.com/elleniaspaty28-cyber/patyproj/blob/main/output/g1patyproj.png?raw=true" alt="Distribution of Social Security claiming ages by gender">
+            <figcaption>FIG. 1 — Claiming age distribution, women vs. men</figcaption>
+        </figure>
+
+        <p>Both distributions lean early, which was expected. What separates them is where the mass sits. Women pile up at the youngest eligible ages more than men do, and men are the ones more likely to still be showing up in the later columns.</p>
+        <p>This tracks with what the literature already says about why. Lower lifetime earnings mean less to gain from waiting. Career interruptions for caregiving shorten work histories. And a woman married to an older man is often coordinating her timing around his retirement, not her own. My data can't separate those channels, but it's consistent with all of them.</p>
+
+        <figure>
+            <img src="https://github.com/elleniaspaty28-cyber/patyproj/blob/main/output/g2patyproj.png?raw=true" alt="Percent claiming at age 62 by household wealth quartile">
+            <figcaption>FIG. 2 — Share claiming at exactly 62, by household wealth quartile</figcaption>
+        </figure>
+
+        <p>Moving from the bottom wealth quartile to the top and the share of people claiming at exactly 62 drops off in a clean, monotonic slide.</p>
+
+        <p class="pull">The rich aren't better at retirement math. They just have the savings to survive the gap between 62 and a bigger check.</p>
+
+        <p>Both models agree, and wealth carries more weight than gender does. Gender still matters on its own once wealth is controlled for, so this isn't just women being poorer, but if you want to know who claims at 62, ask about the bank account before you ask about anything else. Full regression tables are in <code>02_analyze</code>.</p>
+
+        <h2 id="sowhat"><span class="num">05</span>Takeaways</h2>
+        <div class="rule"></div>
+        <p>The default policy response to early claiming is education. Pamphlets, benefit statements, calculators showing you what you'd earn by holding out until 67. All of that assumes the barrier is information.</p>
+        <p>If the pattern in Figure 2 is what it looks like, the barrier is groceries. A household in the bottom quartile deciding between filing at 62 and waiting five years isn't weighing lifetime present value, it's asking what covers rent next month. You cannot pamphlet your way out of that.</p>
+        <p>It also means the actuarial adjustment quietly redistributes. The bonus for waiting is uniform, but the ability to wait is not, so the people who most need a larger benefit are structurally the least able to claim one. Any proposal to raise the retirement age runs straight into this.</p>
+
+    </main>
+
+    <footer>
+        <strong>Data:</strong> RAND HRS Longitudinal File 2022 (V1), RAND Corporation &amp; University of Michigan, public use.<br>
+        Built for QSS 20 · Ellenia Paty 
+    </footer>
+
+</div>
+</body>
+</html>
